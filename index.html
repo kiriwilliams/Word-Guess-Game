@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <!--Meta Tags-->
+    <meta charset="utf">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <!-- Title -->
+    <title>Who's That Pokemon?</title>
+</head>
+
+<body>
+    <header class="row text-center">
+
+        <div class="col-md-12">
+            <h1>Who's That Pokemon?</h1>
+        </div>
+    </header>
+    <main class="row">
+        <div class="col-md-6">
+            <img src="" alt="">
+        </div>
+        <div class="col-md-6">
+            <div id="instructions">
+                Press any key to get started!
+            </div>
+            <div id="wins">
+                Wins: <span id="winCount"></span>
+            </div>
+            <div id="game">
+                Current Word<br>
+                <span id="currentWord"></span>
+
+                Numbers of guesses remaining: <span id="remaining"></span>
+
+                Letters Already Guessed<br>
+                <span id="guessedLetters"></span>
+            </div>
+        </div>
+    </main>
+    <script src="assets/javascript/game.js"></script>
+</body>
+
+</html>
