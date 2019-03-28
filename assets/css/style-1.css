@@ -1,0 +1,12 @@
+#currentWord{
+    letter-spacing: 1.2em;
+}
+header{
+    padding: 20px;
+}
+.right{
+    background: pink;
+}
+.guesses{
+    height: 150px;
+}

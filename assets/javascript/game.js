@@ -11,9 +11,11 @@ var secretWordDiv = document.getElementById("currentWord");
 var letterCount = document.getElementById("letterCount");
 var previousGuessText = document.getElementById("previousGuesses");
 var winText = document.getElementById("winCount");
+var guessesRemaining = document.getElementById("remaining");
 //start game functions
 loadWords();
-pickWord();
+// pickWord();
+reset();
 console.log("victory is "+victory);
 
 
@@ -33,7 +35,7 @@ document.onkeyup = function (event) {
                 //add the current letter to the previousGuesses array
             addGuess(letter);
                 remainingGuesses--;
-                document.getElementById("remaining").innerHTML = remainingGuesses;
+                guessesRemaining.innerHTML = remainingGuesses;
             }
         }
     }
@@ -60,6 +62,7 @@ function checkVictory(){
     else{
         victory = true;
         wins++;
+        gameOver();
     }
 }
 
@@ -95,12 +98,13 @@ function loadWords() {
 }
 //Pick a random word from the word list
 function pickWord() {
+    console.log("pick Word");
     //select a random number between 0 and the length of Word List
     var randomNumber = Math.floor(Math.random() * wordList.length);
     //set currentWord to that position in wordList
     currentWord = wordList[randomNumber];
-    setWord(currentWord);
     console.log(currentWord);
+    setWord(currentWord);
 }
 //create the underscores for the word
 function setWord(currentWord) {
@@ -122,7 +126,9 @@ function reset() {
     previousGuesses = [];
     previousGuessText.innerHTML = previousGuesses;
     winText.innerHTML = wins;
+    guessesRemaining.innerHTML = remainingGuesses;
     pickWord();
+    console.log("reset");
     return;
 }
 
