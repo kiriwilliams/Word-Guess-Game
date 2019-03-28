@@ -153,7 +153,7 @@ function setWord(currentWord) {
         secretWordSpans = secretWordSpans + openSpan + "_" + closeSpan;
         secretWordDiv.html(secretWordSpans);
     }
-    letterCount.html = " (" + length + " letters)";
+    letterCount.html(" (" + length + " letters)");
 }
 //Clear the secret word, pick a new word
 function reset() {
