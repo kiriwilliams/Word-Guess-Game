@@ -6,6 +6,7 @@ header{
 }
 .right{
     background: pink;
+    text-align: center;
 }
 .guesses{
     height: 150px;

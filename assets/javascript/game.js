@@ -1,5 +1,10 @@
 //VARIABLES
 var wordList = [];
+var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "_"];
+$.each(letters,function(i){
+    letters[i] = letters[i].toLowerCase();
+});
+console.log(letters);
 var wins = 0;
 var victory = false;
 var remainingGuesses = 9;
@@ -16,17 +21,15 @@ var guessesRemaining = document.getElementById("remaining");
 loadWords();
 // pickWord();
 reset();
-console.log("victory is "+victory);
 
 
 //Listen for keystrokes
 document.onkeyup = function (event) {
-    console.log("victory is "+victory);
     if (remainingGuesses > 0 && !victory==true) {
         //set the current letter to whatever key was pressed
         var letter = event.key;
         //check that the current letter wasn't already guessed
-        if (newGuess(letter)) {
+        if (newGuess(letter) && validInput(letter)) {
                         //check if the guess is in the word
             if (guessCorrect(letter)) {
                 reveal(letter);
@@ -98,7 +101,6 @@ function loadWords() {
 }
 //Pick a random word from the word list
 function pickWord() {
-    console.log("pick Word");
     //select a random number between 0 and the length of Word List
     var randomNumber = Math.floor(Math.random() * wordList.length);
     //set currentWord to that position in wordList
@@ -143,6 +145,17 @@ function reveal(letter) {
             span.innerHTML = letter;
         }
     }
-
 }
 
+//check if the pressed key is actually a letter
+function validInput(letter){
+    console.log(letter);  
+    console.log("index of: "+letters.indexOf(letter)); 
+    if (letters.indexOf(letter) > -1){
+        console.log("in true");
+        return true;
+    }
+    else{
+        return false;
+    }
+}
