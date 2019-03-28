@@ -17,10 +17,12 @@ var secretWordDiv = $("#currentWord");
 var letterCount = $("#letterCount");
 var previousGuessText = $("#previousGuesses");
 var winText = $("#winCount");
+var loseText = $("#lossCount");
 var guessesRemaining = $("#remaining");
 //start game functions
 loadWords();
-winText.text("0");
+winText.text(wins);
+loseText.text(losses);
 // pickWord();
 reset();
 
@@ -67,12 +69,12 @@ document.onkeyup = function (event) {
         }
     }
     else{
-        alert("here");
         if(victory){
             alert("winner");
         }
         else{
-            alert("loser");
+            losses++;
+            loseText.text(losses);
         }
         reset();
     }

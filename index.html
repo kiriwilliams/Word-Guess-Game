@@ -23,38 +23,41 @@
     </header>
     <main class="container">
         <div class="row">
-        <div class="col-md-6">
-            <img src="" alt="">
-        </div>
-        <div class="col-md-6 right">
-            <div id="instructions">
-                <p id="message"></p>
-                Press any key to get started!
+            <div class="col-md-6">
+                <img src="" alt="">
             </div>
-            <div id="wins">
-                Wins: <span id="winCount"></span>
-            </div>
-            <div id="game">
-                Current Word<br>
-                <span id="currentWord"></span> <span id="letterCount"></span><br>
-
-                Numbers of guesses remaining: <span id="remaining"></span><br>
-
-                <div class="guesses">
-                    Letters Already Guessed<br>
-                <span id="previousGuesses"></span>
+            <div class="col-md-6 right">
+                <div id="instructions">
+                    <p id="message"></p>
+                    Press any key to get started!
                 </div>
-            </div id="replay">
-            <div>
+                <div id="score">
+                    <div id="wins">
+                        Wins: <span id="winCount"></span>
+                    </div>
+                    <div>
+                        Losses: <span id="lossCount"></span>
+                    </div>
+                </div>
+                <div id="game">
+                    Current Word<br>
+                    <span id="currentWord"></span> <span id="letterCount"></span><br>
 
+                    Numbers of guesses remaining: <span id="remaining"></span><br>
+
+                    <div class="guesses">
+                        Letters Already Guessed<br>
+                        <span id="previousGuesses"></span>
+                    </div>
+                </div id="replay">
+                <div>
+
+                </div>
             </div>
         </div>
-    </div>
     </main>
-    <script
-    src="https://code.jquery.com/jquery-3.3.1.js"
-    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="assets/javascript/game.js"></script>
 </body>
 
