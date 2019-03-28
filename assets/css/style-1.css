@@ -1,14 +1,55 @@
+*{
+    box-sizing: border-box;
+}
+body,html{
+    height: 100%;
+}
+.container{
+    height: 100%;
+}
 #currentWord{
     letter-spacing: 1.2em;
 }
 header{
     padding: 20px;
 }
+/*----COLORS----*/
+.bg-light-blue{
+    background-color: #8ce7ff;
+}
+.bg-white{
+    background-color: #fff;
+}
+/*----BORDERS----*/
+.rounded{
+    border-radius: 6px;
+}
+
+.title{
+    position: relative;
+    font-size: 1.2em;
+    padding: 0;
+    margin: 0;
+}
+/*----POSITIONING----*/
 .right{
     background: pink;
     text-align: center;
+    height: 80%;
+}
+.content{
+    margin-top: 5%;
 }
 .guesses{
-    height: 150px;
-    background: plum;
+    height: 100px;
+
+}
+#score{
+    text-align: center;
+}
+#wins, #losses{
+    display: inline-block;
+    width: 49%;
+    text-align: center;
+    border: 1px solid blue;
 }
