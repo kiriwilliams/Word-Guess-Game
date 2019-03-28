@@ -6,45 +6,75 @@ $.each(letters,function(i){
 });
 console.log(letters);
 var wins = 0;
+var losses = 0;
 var victory = false;
 var remainingGuesses = 9;
 var previousGuesses = [];
 var currentGuess = "";
 var currentWord = "";
 var secretWordSpans = "";//the string that will include spans for each underscore
-var secretWordDiv = document.getElementById("currentWord");
-var letterCount = document.getElementById("letterCount");
-var previousGuessText = document.getElementById("previousGuesses");
-var winText = document.getElementById("winCount");
-var guessesRemaining = document.getElementById("remaining");
+var secretWordDiv = $("#currentWord");
+var letterCount = $("#letterCount");
+var previousGuessText = $("#previousGuesses");
+var winText = $("#winCount");
+var guessesRemaining = $("#remaining");
 //start game functions
 loadWords();
+winText.text("0");
 // pickWord();
 reset();
 
+// //if the player has not won and there are remaining guesses
+// if(remainingGuesses > 0 && victory==false){
+//     //listen for keystrokes
+//     document.onkeyup = function (event){
+//         var letter = event.key;
+//         //check 
+//         if (newGuess(letter) && validInput(letter)){
+//             //check if the guess is in the word
+//             if(guessCorrect(letter)){
+//                 reveal(letter);//show the correct letter
+//                 checkVictory();//check if the player won
+//             }
+//         }
+//         else{//the guess is not in the word
+//             addGuess(letter);//add the letter to previousGuesses array
+//             remainingGuesses --;//subtract one guess
+            
+//         }
+//     }
+// }
 
 //Listen for keystrokes
 document.onkeyup = function (event) {
+    //if the player has not yet won and there are remaining guesses
     if (remainingGuesses > 0 && !victory==true) {
         //set the current letter to whatever key was pressed
         var letter = event.key;
         //check that the current letter wasn't already guessed
+        //also check that it is actually a letter key
         if (newGuess(letter) && validInput(letter)) {
-                        //check if the guess is in the word
+            //check if the guess is in the word
             if (guessCorrect(letter)) {
-                reveal(letter);
-                checkVictory();
+                reveal(letter);//show the correct letter
+                checkVictory();//check if player won
             } else {
-                //add the current letter to the previousGuesses array
+            //add the current letter to the previousGuesses array
             addGuess(letter);
-                remainingGuesses--;
-                guessesRemaining.innerHTML = remainingGuesses;
+                remainingGuesses--;//subtract one guess
+                guessesRemaining.text(remainingGuesses);//update guesses
             }
         }
     }
     else{
+        alert("here");
+        if(victory){
+            alert("winner");
+        }
+        else{
+            alert("loser");
+        }
         reset();
-        console.log("reset");
     }
 };
 
@@ -52,8 +82,10 @@ document.onkeyup = function (event) {
 //FUNCTIONS
 //add keystroke to list of guesses
 function addGuess(letter) {
+    console.log("letter");
     previousGuesses.push(letter);
-    previousGuessText.innerHTML = previousGuesses;
+    console.log(previousGuesses);
+    previousGuessText.text(previousGuesses);
 }
 //check if all letters have been correctly guessed
 function checkVictory(){
@@ -110,25 +142,25 @@ function pickWord() {
 }
 //create the underscores for the word
 function setWord(currentWord) {
-    secretWordDiv.innerHTML = "";
+    secretWordDiv.text = "";
     secretWordSpans = "";
     var length = currentWord.length;
     for (var i = 0; i < length; i++) {
         var openSpan = "<span id ='letter" + i + "'>"
         var closeSpan = "</span>";
         secretWordSpans = secretWordSpans + openSpan + "_" + closeSpan;
-        secretWordDiv.innerHTML = secretWordSpans;
+        secretWordDiv.html(secretWordSpans);
     }
-    letterCount.innerHTML = " (" + length + " letters)";
+    letterCount.html = " (" + length + " letters)";
 }
 //Clear the secret word, pick a new word
 function reset() {
     remainingGuesses = 9;
     victory = false;
     previousGuesses = [];
-    previousGuessText.innerHTML = previousGuesses;
-    winText.innerHTML = wins;
-    guessesRemaining.innerHTML = remainingGuesses;
+    previousGuessText.text(previousGuesses);
+    winText.html(wins);
+    guessesRemaining.html(remainingGuesses);
     pickWord();
     console.log("reset");
     return;
@@ -139,10 +171,11 @@ function reveal(letter) {
     //find where the letter occurs in the current word
     //step through the letters of the current word
     for (var i = 0; i < currentWord.length; i++) {
+        console.log(letter);
         if (currentWord[i] == letter) {
             var letterSlot = "letter" + i;
-            var span = document.getElementById(letterSlot);
-            span.innerHTML = letter;
+            var span = $("#"+letterSlot);
+            span.html(letter);
         }
     }
 }
