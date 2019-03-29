@@ -29,7 +29,10 @@ and using https://www.fontsquirrel.com/tools/webfont-generator*/
 #currentWord {
     letter-spacing: 1.2em;
 }
-
+#pokedex{
+    margin: 0 auto;
+    width: 100%;
+}
 
 /*----COLORS----*/
 
@@ -72,15 +75,26 @@ and using https://www.fontsquirrel.com/tools/webfont-generator*/
 header {
     padding: 20px;
 }
-.right, .left {
+.column{
+    width: 49%;
+    max-width: 500px;
+    display: inline-block;
+    height: 80%;
     background: #ff4747;
     text-align: center;
-    height: 80%;
     position: relative;
+    border-right: 3px solid #af2424;
+    border-bottom: 6px solid #af2424;
+}
+
+.right{
+    margin-left: 10px;
 }
 .content {
-    margin-top: 5%;
+    margin: 5% auto 0;
     padding-top: 10px;
+    width: 80%;
+    
 }
 
 .guesses {
@@ -94,4 +108,9 @@ header {
     background-color: #d8d8d8;
     height: 300px;
     width: 300px;
+    margin: 20% auto 0;
+}
+img{
+    margin: 0 auto;
+    height: 80%;
 }
