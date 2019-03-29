@@ -160,7 +160,6 @@ function reset() {
     winText.html(wins);
     guessesRemaining.html(remainingGuesses);
     pickWord();
-    console.log("reset");
     return;
 }
 
