@@ -30,9 +30,6 @@ and using https://www.fontsquirrel.com/tools/webfont-generator*/
     letter-spacing: 1.2em;
 }
 
-header {
-    padding: 20px;
-}
 
 /*----COLORS----*/
 
@@ -72,13 +69,15 @@ header {
 }
 
 /*----POSITIONING----*/
-
-.right {
-    background: #fc5555;
+header {
+    padding: 20px;
+}
+.right, .left {
+    background: #ff4747;
     text-align: center;
     height: 80%;
+    position: relative;
 }
-
 .content {
     margin-top: 5%;
     padding-top: 10px;
@@ -90,4 +89,9 @@ header {
 
 #score {
     text-align: center;
+}
+.image-frame{
+    background-color: #d8d8d8;
+    height: 300px;
+    width: 300px;
 }
