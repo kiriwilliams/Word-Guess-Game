@@ -4,7 +4,6 @@ var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", 
 $.each(letters,function(i){
     letters[i] = letters[i].toLowerCase();
 });
-console.log(letters);
 var wins = 0;
 var losses = 0;
 var victory = false;
@@ -84,9 +83,7 @@ document.onkeyup = function (event) {
 //FUNCTIONS
 //add keystroke to list of guesses
 function addGuess(letter) {
-    console.log("letter");
     previousGuesses.push(letter);
-    console.log(previousGuesses);
     previousGuessText.text(previousGuesses);
 }
 //check if all letters have been correctly guessed
@@ -139,7 +136,6 @@ function pickWord() {
     var randomNumber = Math.floor(Math.random() * wordList.length);
     //set currentWord to that position in wordList
     currentWord = wordList[randomNumber];
-    console.log(currentWord);
     setWord(currentWord);
 }
 //create the underscores for the word
@@ -173,7 +169,6 @@ function reveal(letter) {
     //find where the letter occurs in the current word
     //step through the letters of the current word
     for (var i = 0; i < currentWord.length; i++) {
-        console.log(letter);
         if (currentWord[i] == letter) {
             var letterSlot = "letter" + i;
             var span = $("#"+letterSlot);
@@ -184,10 +179,7 @@ function reveal(letter) {
 
 //check if the pressed key is actually a letter
 function validInput(letter){
-    console.log(letter);  
-    console.log("index of: "+letters.indexOf(letter)); 
     if (letters.indexOf(letter) > -1){
-        console.log("in true");
         return true;
     }
     else{
