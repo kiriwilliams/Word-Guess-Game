@@ -90,6 +90,9 @@ header {
 .right{
     margin-left: 10px;
 }
+.left{
+    padding: 20px;
+}
 .content {
     margin: 5% auto 0;
     padding-top: 10px;
