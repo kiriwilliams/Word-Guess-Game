@@ -8,7 +8,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet"> -->
+        <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
+
+
     <link rel="stylesheet" href="assets/css/style-1.css">
+
     <!-- Title -->
     <title>Who's That Pokemon?</title>
 
@@ -18,7 +23,7 @@
     <header class="row text-center">
 
         <div class="col-md-12">
-            <h1>Who's That Pokemon?</h1>
+            <h1 class="mt-3">Who's That Pokemon?</h1>
         </div>
     </header>
     <main class="container">
@@ -36,28 +41,45 @@
                 </div>
 
                 <!--CURRENT WORD-->
-                <div id="game" class="bg-light-blue rounded content">
-                    <span class="title">Current Word</span><br>
-                    <span id="currentWord"></span> <span id="letterCount"></span><br>
+                <div id="game" class="rounded content h-30">
+                    <div class="row h-30">
+                        <div class="col-md-12">
+                                <span class="title">CURRENT WORD</span>
+                        </div>
+                    </div>
+                    <div class="row h-30 mt-3">
+                        <div class="col-md-12">
+                                <span id="currentWord" class="m-3"></span> <br>
+                                <span id="letterCount"></span>
+                        </div>
+                    </div>
 
-                    Numbers of guesses remaining: <span id="remaining"></span><br>
+                   <div class="row h-30 mt-2">
+                       <div class="col-md-12 mt-2">
+                            GUESSES LEFT: <span id="remaining"></span>
+                       </div>
+                   </div>
                 </div>
 
                 <!--ALREADY GUESSED LETTERS-->
                 <div class="bg-light-blue rounded content guesses">
-                    <span class="title"> Letters Already Guessed</span><br>
+                    <span class="title"> Already Guessed</span><br>
                     <span id="previousGuesses"></span>
                 </div>
 
                 <!--SCORE-->
                 <div id="score" class="bg-light-blue rounded content">
-                    <span class="title">Score</span><br>
-                    <div id="wins">
+                  <div class="row">
+                        <div class="col-md-12">
+                                <span class="title">Score</span>
+                        </div>
+                    <div id="wins" class="col-md-6 mb-3">
                         Wins: <span id="winCount"></span>
                     </div>
-                    <div id="losses">
+                    <div id="losses" class="col-md-6">
                         Losses: <span id="lossCount"></span>
                     </div>
+                  </div>
                 </div>
 
             <!--REPLAY // not functional yet-->

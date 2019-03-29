@@ -1,55 +1,93 @@
-*{
+* {
     box-sizing: border-box;
 }
-body,html{
+
+body, html {
     height: 100%;
 }
-.container{
-    height: 100%;
+
+/*---FONTS---*/
+
+@font-face {
+    font-family: 'pkmn_rbygscregular';
+    src: 
+        url('fonts/pkmn_rbygsc/pkmn_rbygsc-webfont.woff2') format('woff2'), 
+        url('fonts/pkmn_rbygsc/pkmn_rbygsc-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
-#currentWord{
+
+.container {
+    height: 100%;
+    /* font-family: 'VT323', monospace; */
+    font-family: 'pkmn_rbygscregular', monospace;
+}
+
+#currentWord {
     letter-spacing: 1.2em;
 }
-header{
+
+header {
     padding: 20px;
 }
+
 /*----COLORS----*/
-.bg-light-blue{
+
+.bg-light-blue {
     background-color: #8ce7ff;
 }
-.bg-white{
+
+.bg-white {
     background-color: #fff;
 }
+
+.bg-black {
+    background-color: #2d2d2d;
+}
+
+#game {
+    background-color: #2d2d2d;
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 10px;
+    font-size: 0.8em;
+}
+
 /*----BORDERS----*/
-.rounded{
+
+.rounded {
     border-radius: 6px;
 }
 
-.title{
+/*----SIZING----*/
+
+.h-30 {
+    height: 30%;
+}
+
+.title {
     position: relative;
     font-size: 1.2em;
     padding: 0;
     margin: 0;
 }
+
 /*----POSITIONING----*/
-.right{
-    background: pink;
+
+.right {
+    background: #fc5555;
     text-align: center;
     height: 80%;
 }
-.content{
+
+.content {
     margin-top: 5%;
 }
-.guesses{
-    height: 100px;
 
+.guesses {
+    height: 100px;
 }
-#score{
+
+#score {
     text-align: center;
-}
-#wins, #losses{
-    display: inline-block;
-    width: 49%;
-    text-align: center;
-    border: 1px solid blue;
 }
