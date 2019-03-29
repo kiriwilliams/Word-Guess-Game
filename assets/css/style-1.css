@@ -44,10 +44,6 @@ header {
     background-color: #fff;
 }
 
-.bg-black {
-    background-color: #2d2d2d;
-}
-
 #game {
     background-color: #2d2d2d;
     border: 2px solid #fff;
@@ -85,6 +81,7 @@ header {
 
 .content {
     margin-top: 5%;
+    padding-top: 10px;
 }
 
 .guesses {
