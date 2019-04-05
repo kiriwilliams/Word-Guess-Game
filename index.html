@@ -21,21 +21,27 @@
 
 <body>
     <header class="row text-center">
-
+        
         <div class="col-md-12">
             <h1 class="mt-3">Who's That Pokemon?</h1>
-        </div>
+            <button id="reset">replay</button>        </div>
     </header>
     <main class="container">
         <div class="row h-100 d-flex justify-content-center">
             <div class="column left rounded">
-                <!--IMAGES // not functional yet-->
-                <div class="image-frame">
-                    <img src="assets/images/Kanto-EN-field-guide-300x381.jpg" alt="">
+               
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="image-frame">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="info"></div>
+                    </div>
                 </div>
                 
-                Once I know how to use APIs this will show an image of the pokemon. Maybe starting with a silhouette? I'm not sure what images I'll be able to get/how I'll manipulate them.
-                (it's supposed to look like a kanto pokedex)
                 <div id="hinge"></div>
             </div>
             <div class="column right rounded">

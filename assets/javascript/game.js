@@ -18,6 +18,7 @@ var previousGuessText = $("#previousGuesses");
 var winText = $("#winCount");
 var loseText = $("#lossCount");
 var guessesRemaining = $("#remaining");
+var pokeName = "";
 //start game functions
 loadWords();
 winText.text(wins);
@@ -25,31 +26,11 @@ loseText.text(losses);
 // pickWord();
 reset();
 
-// //if the player has not won and there are remaining guesses
-// if(remainingGuesses > 0 && victory==false){
-//     //listen for keystrokes
-//     document.onkeyup = function (event){
-//         var letter = event.key;
-//         //check 
-//         if (newGuess(letter) && validInput(letter)){
-//             //check if the guess is in the word
-//             if(guessCorrect(letter)){
-//                 reveal(letter);//show the correct letter
-//                 checkVictory();//check if the player won
-//             }
-//         }
-//         else{//the guess is not in the word
-//             addGuess(letter);//add the letter to previousGuesses array
-//             remainingGuesses --;//subtract one guess
-            
-//         }
-//     }
-// }
 
 //Listen for keystrokes
 document.onkeyup = function (event) {
     //if the player has not yet won and there are remaining guesses
-    if (remainingGuesses > 0 && !victory==true) {
+    if (remainingGuesses > 1 && !victory==true) {
         //set the current letter to whatever key was pressed
         var letter = event.key;
         //check that the current letter wasn't already guessed
@@ -69,13 +50,12 @@ document.onkeyup = function (event) {
     }
     else{
         if(victory){
-            alert("winner");
+            
         }
         else{
             losses++;
-            loseText.text(losses);
         }
-        reset();
+        gameOver();
     }
 };
 
@@ -102,7 +82,13 @@ function checkVictory(){
 
 //end the game
 function gameOver(){
-    reset();
+    $("#image-frame img").removeClass("silhouette");
+    getDex(currentWord);
+    winText.html(wins);
+    loseText.text(losses);
+    $("#reset").on("click",function(){
+        reset();
+    });
 }
 //check keystroke against currentWord
 function guessCorrect(letter) {
@@ -150,6 +136,7 @@ function setWord(currentWord) {
         secretWordDiv.html(secretWordSpans);
     }
     letterCount.html(" (" + length + " letters)");
+    showImage(currentWord);
 }
 //Clear the secret word, pick a new word
 function reset() {
@@ -157,8 +144,8 @@ function reset() {
     victory = false;
     previousGuesses = [];
     previousGuessText.text(previousGuesses);
-    winText.html(wins);
     guessesRemaining.html(remainingGuesses);
+    $("#info").empty();
     pickWord();
     return;
 }
@@ -184,4 +171,50 @@ function validInput(letter){
     else{
         return false;
     }
+}
+
+//get pokemon image 
+function getImage(pokemon){
+
+    var queryURL = "https://pokeapi.co/api/v2/pokemon/"+pokemon
+
+    $.ajax({
+        url: queryURL,
+        method: "GET",
+    }).then(function(response){
+        var imageSRC = response.sprites.front_default;
+        var image = $("<img>");
+        image.attr({"src":imageSRC,"attr":pokemon,"class":"silhouette"});
+        $("#image-frame").empty();      
+        $("#image-frame").append(image);
+        pokeName = response.name;
+               
+    });
+}
+function getDex(pokemon){
+    var queryURL = "https://pokeapi.co/api/v2/pokemon-species/" + pokemon;
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response){
+        $("#info").text(getEng());
+        function getEng(){
+            var flavorEntries = response.flavor_text_entries;
+            var engEntries = [];
+                flavorEntries.forEach(function(entry){   
+                    if(entry.language.name === "en"){
+                     engEntries.push(entry);
+                }
+            });
+            return engEntries[0].flavor_text;       
+        }
+    });
+}
+//show pokemon image
+function showImage(pokemon){
+    $("#image-frame").empty();
+    var image = getImage(pokemon);
+  
+    $("#image-frame").append(image);
 }
