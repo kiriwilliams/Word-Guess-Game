@@ -183,19 +183,21 @@ function getImage(pokemon){
         method: "GET",
         error: function(){
             alert("error");
+            addImage("images/ditto.png");
+            return;
         }
     }).then(function(response){
-        addImage(response);
+        var imageSRC = response.sprites.front_default;
+        addImage(imageSRC);
                
     });
 }
-function addImage(pokemon){
-    var imageSRC = pokemon.sprites.front_default;
+function addImage(src){
+    
     var image = $("<img>");
-    image.attr({"src":imageSRC,"class":"silhouette"});
+    image.attr({"src":src,"class":"silhouette"});
     $("#image-frame").empty();      
     $("#image-frame").append(image);
-    pokeName = pokemon.name;
 }
 function getDex(pokemon){
     var queryURL = "https://pokeapi.co/api/v2/pokemon-species/" + pokemon;
