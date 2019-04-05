@@ -117,3 +117,8 @@ img{
     margin: 0 auto;
     height: 80%;
 }
+
+.silhouette{
+    filter: contrast(200%);
+    filter: brightness(0);
+}
