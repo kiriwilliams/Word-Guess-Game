@@ -26,7 +26,6 @@ loseText.text(losses);
 // pickWord();
 reset();
 
-
 //Listen for keystrokes
 document.onkeyup = function (event) {
     //if the player has not yet won and there are remaining guesses
@@ -125,10 +124,11 @@ function pickWord() {
     setWord(currentWord);
 }
 //create the underscores for the word
-function setWord(currentWord) {
+function setWord(pokemonName) {
+    console.log("set word");
     secretWordDiv.text = "";
     secretWordSpans = "";
-    var length = currentWord.length;
+    var length = pokemonName.length;
     for (var i = 0; i < length; i++) {
         var openSpan = "<span id ='letter" + i + "'>"
         var closeSpan = "</span>";
@@ -136,7 +136,7 @@ function setWord(currentWord) {
         secretWordDiv.html(secretWordSpans);
     }
     letterCount.html(" (" + length + " letters)");
-    showImage(currentWord);
+    showImage(pokemonName);
 }
 //Clear the secret word, pick a new word
 function reset() {
@@ -181,15 +181,21 @@ function getImage(pokemon){
     $.ajax({
         url: queryURL,
         method: "GET",
+        error: function(){
+            alert("error");
+        }
     }).then(function(response){
-        var imageSRC = response.sprites.front_default;
-        var image = $("<img>");
-        image.attr({"src":imageSRC,"attr":pokemon,"class":"silhouette"});
-        $("#image-frame").empty();      
-        $("#image-frame").append(image);
-        pokeName = response.name;
+        addImage(response);
                
     });
+}
+function addImage(pokemon){
+    var imageSRC = pokemon.sprites.front_default;
+    var image = $("<img>");
+    image.attr({"src":imageSRC,"class":"silhouette"});
+    $("#image-frame").empty();      
+    $("#image-frame").append(image);
+    pokeName = pokemon.name;
 }
 function getDex(pokemon){
     var queryURL = "https://pokeapi.co/api/v2/pokemon-species/" + pokemon;
