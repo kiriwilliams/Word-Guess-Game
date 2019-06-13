@@ -1,5 +1,8 @@
 # Word-Guess-Game
+Link to live site: https://kiriwilliams.github.io/Word-Guess-Game/
+
 Javascript practice
+
 A simple word guessing game with the following features:
 
 - Use key events to listen for the letters that your players will type.
